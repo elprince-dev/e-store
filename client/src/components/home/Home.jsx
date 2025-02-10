@@ -1,12 +1,12 @@
 import Banner from "./Banner"
-import TopSellers from "./TopSellers"
+import TopSelling from "./TopSelling"
 
 const Home = () => {
   return (
-    <>
+    <section suppressHydrationWarning >
         <Banner />
-        <TopSellers />
-    </>
+        <TopSelling />
+    </section>
   )
 }
 

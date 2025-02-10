@@ -3,7 +3,7 @@ import { HiMiniBars3CenterLeft } from "react-icons/hi2"
 
 const MenuIcon = () => {
   return (
-    <Link href="/" className="size-6" legacyBehavior>
+    <Link href="/" className="size-6" >
         <HiMiniBars3CenterLeft />
     </Link>
   )
