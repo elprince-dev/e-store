@@ -1,9 +1,8 @@
 'use client'
 import { useState } from "react"
-import { IoBookSharp } from "react-icons/io5"
 import {books} from '../../data/books'
-import {motion} from 'framer-motion'
 import ProductCard from "../ui/ProductCard"
+
 
 
 const TopSelling = () => {
@@ -34,7 +33,9 @@ const TopSelling = () => {
 
         {/* book grid */}
         {filteredBooks.map((book) =>(
-          <ProductCard title={book.title} oldPrice={book.oldPrice} newPrice={book.newPrice} image={book.coverImage} />
+          <ProductCard key={book.title} title={book.title} oldPrice={book.oldPrice} newPrice={book.newPrice} image={book.coverImage} description={book.description} />
+          
+          
               
         ))}
     </section>

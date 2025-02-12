@@ -1,42 +1,54 @@
-'use client'
-import { motion } from 'framer-motion'
-const ProductCard = ({title, oldPrice, newPrice, image}) => {
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Typography,
+  Button,
+} from "@material-tailwind/react";
+
+export default function ProductCard({ title, oldPrice, newPrice, image, description }) {
   return (
-    <motion.div
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
-      className="relative w-72 h-96 bg-white shadow-lg rounded-2xl overflow-hidden cursor-pointer transition-all"
-    >
-      {/* Product Image */}
-      <img
-        src={`/books/${image}`}
-        alt=""
-        className="w-full h-full object-cover"
-      />
-
-      {/* Hover Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-50 backdrop-blur-sm opacity-0 hover:opacity-100 transition-opacity duration-500 flex flex-col items-center justify-center gap-3 text-white">
-        <h2 className="text-lg font-semibold tracking-wide">
-          {title}
-        </h2>
-
-        {/* Price */}
-        <div className="flex items-center gap-2 text-xl font-bold">
-          <span className="text-gray-300 line-through">${oldPrice}</span>
-          <span className="text-yellow-400">${newPrice}</span>
+    <Card className="w-96" suppressHydrationWarning>
+      <CardHeader shadow={false} floated={false} className="h-96">
+        <img
+          src={`./books/${image}`}
+          alt={`${image} image`}
+          className="h-full w-full object-cover"
+        />
+      </CardHeader>
+      <CardBody>
+        <div className="mb-2 flex items-center justify-between">
+          <Typography color="blue-gray" className="font-medium">
+            {title}
+          </Typography>
+          <div className="flex items-center gap-2">
+            {oldPrice ? <Typography color="gray" className="line-through text-sm">
+              ${oldPrice}
+            </Typography> : null}
+            
+            <Typography color="blue-gray" className="font-medium text-lg">
+              ${newPrice}
+            </Typography>
+          </div>
         </div>
-
-        {/* Add to Cart Button */}
-        <motion.button
-          whileHover={{ scale: 1.1 }}
-          whileTap={{ scale: 0.9 }}
-          className="bg-yellow-400 text-black px-5 py-2 rounded-full font-medium shadow-md hover:bg-yellow-500 transition-colors"
+        <Typography
+          variant="small"
+          color="gray"
+          className="font-normal opacity-75"
+        >
+          {description}
+        </Typography>
+      </CardBody>
+      <CardFooter className="pt-0">
+        <Button
+          ripple={false}
+          fullWidth={true}
+          className="bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
         >
           Add to Cart
-        </motion.button>
-      </div>
-    </motion.div>
-  )
+        </Button>
+      </CardFooter>
+    </Card>
+  );
 }
-
-export default ProductCard
