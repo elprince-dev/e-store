@@ -1,4 +1,4 @@
-export const books = [
+export const products = [
   {
     _id: 1,
     title: "How to Grow Your Online Store",

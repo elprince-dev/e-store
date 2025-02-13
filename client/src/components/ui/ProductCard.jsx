@@ -6,29 +6,36 @@ import {
   Typography,
   Button,
 } from "@material-tailwind/react";
+import Link from "next/link";
 
-export default function ProductCard({ title, oldPrice, newPrice, image, description }) {
+
+
+export default function ProductCard({ product }) {
   return (
-    <Card className="w-96" suppressHydrationWarning>
-      <CardHeader shadow={false} floated={false} className="h-96">
-        <img
-          src={`./books/${image}`}
-          alt={`${image} image`}
-          className="h-full w-full object-cover"
-        />
+    <Card className="w-80 transition-shadow duration-300 rounded-lg">
+      <CardHeader shadow={false} floated={false} className="h-96 rounded-lg p-3">
+        <Link href={`/product/${product._id}`}>
+          <img
+            src={`./books/${product.coverImage}`}
+            alt={`${product.coverImage} image`}
+            className="h-full w-full object-cover cursor-pointer hover:scale-105 transition-all duration-200  rounded-md"
+          />
+        </Link>
       </CardHeader>
-      <CardBody>
+      <CardBody className="h-44">
         <div className="mb-2 flex items-center justify-between">
-          <Typography color="blue-gray" className="font-medium">
-            {title}
-          </Typography>
+          <Link href={`/product/${product._id}`}>
+            <Typography color="blue-gray" className="font-medium">
+              {product.title}
+            </Typography>
+          </Link>
           <div className="flex items-center gap-2">
-            {oldPrice ? <Typography color="gray" className="line-through text-sm">
-              ${oldPrice}
+            {product.oldPrice ? <Typography color="gray" className="line-through text-sm">
+              ${product.oldPrice}
             </Typography> : null}
             
             <Typography color="blue-gray" className="font-medium text-lg">
-              ${newPrice}
+              ${product.newPrice}
             </Typography>
           </div>
         </div>
@@ -37,7 +44,7 @@ export default function ProductCard({ title, oldPrice, newPrice, image, descript
           color="gray"
           className="font-normal opacity-75"
         >
-          {description}
+          {product.description.length < 100 ? product.description : product.description.slice(0, 100) + ' ...'}
         </Typography>
       </CardBody>
       <CardFooter className="pt-0">
