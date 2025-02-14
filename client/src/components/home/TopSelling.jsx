@@ -1,6 +1,6 @@
 'use client'
-import { useState } from "react"
-import {products} from '../../data/products'
+import { useEffect, useState } from "react"
+// import {products} from '../../data/products'
 import ProductCard from "@/components/ui/ProductCard"
 import ProductSwiper from "./ProductSwiper"
 import Title from "./Title"
@@ -8,6 +8,14 @@ import Title from "./Title"
 
 
 const TopSelling = () => {
+
+  const [products, setProducts] = useState([])
+
+  useEffect(()=>{
+    fetch('./products.json')
+    .then(res => res.json())
+    .then(products => setProducts(products))
+  },[])
 
   const categories = ['Choose a genre', 'Business', 'Fiction', 'Horror', 'Adventure']
   const [selectedCategory, setSelectedCategory] = useState('Choose a genre')

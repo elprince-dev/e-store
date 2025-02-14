@@ -1,9 +1,19 @@
+'use client'
 import Title from "./Title"
-import { products } from "@/data/products"
+// import { products } from "@/data/products"
 import ProductSwiper from "./ProductSwiper"
+import { useEffect, useState } from "react"
 
 
 const Recommended = () => {
+
+  const [products, setProducts] = useState([])
+
+  useEffect(()=>{
+    fetch('./products.json')
+    .then(res => res.json())
+    .then(products => setProducts(products))
+  },[])
 
     const filteredProducts= products.slice(0,11)
   return (

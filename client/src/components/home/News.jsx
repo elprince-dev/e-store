@@ -1,7 +1,15 @@
+import React from 'react'
+import Title from './Title'
+import NewsSwiper from './NewsSwiper'
+
+
 
 const News = () => {
   return (
-    <div>News</div>
+    <section>
+      <Title title={'News'}/>
+      <NewsSwiper />
+    </section>
   )
 }
 
