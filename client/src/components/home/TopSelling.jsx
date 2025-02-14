@@ -23,12 +23,12 @@ const TopSelling = () => {
   const filteredProducts = selectedCategory === 'Choose a genre' ? products : products.filter(product => product.category === selectedCategory.toLowerCase())
 
   return (
-    <section className="py-10">
+    <section className="py-10 ">
 
         <Title title="Top Selling" />
 
         {/* category filtering */}
-        <section className="flex items-center mb-8">
+        <section className="flex items-center mb-8 ">
           <select 
           name="category" 
           id="category"

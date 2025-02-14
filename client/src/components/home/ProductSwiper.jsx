@@ -13,6 +13,7 @@ import { Pagination, Navigation } from 'swiper/modules';
 import ProductCard from '@/components/ui/ProductCard';
 const ProductSwiper = ({filteredProducts}) => {
   return (
+    <div>
     <Swiper
         slidesPerView={1}
         spaceBetween={10}
@@ -38,15 +39,19 @@ const ProductSwiper = ({filteredProducts}) => {
           },
         }}
         modules={[Pagination, Navigation]}
-        className="mySwiper"
         navigation={true}
       >
         {filteredProducts.length > 0 && filteredProducts.map((product) =>(
-          <SwiperSlide key={product.title}>
-            <ProductCard  product = {product} />
+          <SwiperSlide key={product.title}
+          
+          >
+            <div className='w-full flex justify-center'>
+            <ProductCard   product = {product} />
+            </div>
           </SwiperSlide>     
         ))}
       </Swiper>
+      </div>
   )
 }
 

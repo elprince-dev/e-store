@@ -12,7 +12,7 @@ import Link from "next/link";
 
 export default function ProductCard({ product }) {
   return (
-    <Card className="w-80 transition-shadow duration-300 rounded-lg">
+    <Card className="w-80 transition-shadow duration-300 rounded-lg ">
       <CardHeader shadow={false} floated={false} className="h-96 rounded-lg p-3">
         <Link href={`/product/${product._id}`}>
           <img
