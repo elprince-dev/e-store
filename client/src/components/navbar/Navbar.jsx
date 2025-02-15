@@ -12,7 +12,7 @@ const Navbar = () => {
 
     
 
-    const currentUser = true;
+    const currentUser = false;
   return (
     <header className="max-w-screen-2xl mx-auto px-4 py-6">
         <nav className="flex justify-between items-center">
@@ -30,7 +30,7 @@ const Navbar = () => {
                 {/* User icon */}
                 {currentUser ?
                 <UserIcon currentUser = {currentUser}/> : 
-                <Link href="/login" className="hidden sm:block" >
+                <Link href="/signin" className="hidden sm:block" >
                     <HiOutlineUser className="size-6" />
                 </Link>
                 }
