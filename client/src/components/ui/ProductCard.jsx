@@ -1,3 +1,5 @@
+import { addToCart } from "@/redux/features/cart/cartSlice";
+import { useAppDispatch } from "@/redux/lib/hooks";
 import {
   Card,
   CardHeader,
@@ -10,7 +12,13 @@ import Link from "next/link";
 
 
 
+
 export default function ProductCard({ product }) {
+
+  const dispatch = useAppDispatch();
+  const handleCart = () => {
+    dispatch(addToCart(product));
+  }
   return (
     <Card className="w-80 transition-shadow duration-300 rounded-lg ">
       <CardHeader shadow={false} floated={false} className="h-96 rounded-lg p-3">
@@ -49,6 +57,7 @@ export default function ProductCard({ product }) {
       </CardBody>
       <CardFooter className="pt-0">
         <Button
+        onClick={() => handleCart(product)}
           ripple={false}
           fullWidth={true}
           className="bg-blue-gray-900/10 text-blue-gray-900 shadow-none hover:scale-105 hover:shadow-none focus:scale-105 focus:shadow-none active:scale-100"
