@@ -1,12 +1,12 @@
 'use client'
-import { useAppSelector } from "@/redux/lib/hooks"
 import Link from "next/link"
 import { HiOutlineShoppingCart } from "react-icons/hi2"
+import { useSelector } from "react-redux"
 
 
 const ShoppingCart = () => {
 
-  const cartItems = useAppSelector(state => state.cart.cartItems)
+  const cartItems = useSelector(state => state.cart.cartItems)
 
   return (
     <Link href='/cart' className="" >
