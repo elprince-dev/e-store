@@ -3,76 +3,94 @@ import Link from "next/link"
 import { useState } from "react"
 import { FaGoogle } from "react-icons/fa";
 import { useForm } from "react-hook-form"
-const Register = () => {
-    
-      const [message, setMessage] = useState('')
-    
-      const {
-        register,
-        handleSubmit,
-        watch,
-        formState: { errors },
-      } = useForm()
-    
-      const onSubmit = (data) => console.log(data)
-      const handleGoogleSignIn = () => {
-        
-      }
 
+const Register = () => {
+  const [message, setMessage] = useState('')
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm()
+
+  const onSubmit = (data) => console.log(data)
+  const handleGoogleSignIn = () => {
+    // Handle Google Sign In
+  }
 
   return (
-    <section className="h-screen flex justify-center items-center">
-      <section className="justify-center w-full max-w-sm mx-auto bg-white shadow-md rounded px-8 pt-6 pb-4">
-        <h2 className="text-xl font-semibold mb-4 text-center">Register </h2>
+    <section className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-50 to-purple-50">
+      <section className="w-full max-w-md mx-4 bg-white rounded-lg shadow-xl overflow-hidden">
+        <div className="px-8 pt-10 pb-8">
+          <h2 className="text-3xl font-bold text-center text-gray-800 mb-8">Register</h2>
 
-        <form onSubmit={handleSubmit(onSubmit)}>
-          {/* Email */}
-          <div className="mb-4">
-            <labe className='block text-gray-700 text-sm font-bold mb-2' htmlFor="email"> Email</labe>
-            <input 
-             {...register("email", { required: true })}
-              type="email" 
-              name="email" 
-              id="email" 
-              placeholder="Email Address"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            />
+          <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+            {/* Email */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="email">
+                Email
+              </label>
+              <input
+                {...register("email", { required: true })}
+                type="email"
+                name="email"
+                id="email"
+                placeholder="Email Address"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200"
+              />
+              {errors.email && <p className="text-red-500 text-xs mt-1">Email is required</p>}
+            </div>
+
+            {/* Password */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2" htmlFor="password">
+                Password
+              </label>
+              <input
+                {...register("password", { required: true })}
+                type="password"
+                name="password"
+                id="password"
+                placeholder="Password"
+                className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 transition duration-200"
+              />
+              {errors.password && <p className="text-red-500 text-xs mt-1">Password is required</p>}
+            </div>
+
+            {message && <p className="text-red-500 text-xs italic">{message}</p>}
+
+            <button
+              type="submit"
+              className="w-full bg-gradient-to-r from-blue-400 to-purple-400 text-white py-3 rounded-lg font-semibold hover:from-blue-500 hover:to-purple-500 transition duration-200"
+            >
+              Register
+            </button>
+          </form>
+
+          <p className="text-center text-sm text-gray-600 mt-6">
+            Have an account?{" "}
+            <Link href="/signin" className="text-blue-500 hover:text-blue-700 font-semibold">
+              Sign In
+            </Link>
+          </p>
+
+          {/* Google Sign In */}
+          <div className="mt-6">
+            <button
+              onClick={handleGoogleSignIn}
+              className="w-full flex items-center justify-center gap-2 bg-red-400 text-white py-3 rounded-lg font-semibold hover:bg-red-500 transition duration-200"
+            >
+              <FaGoogle className="text-lg" />
+              Sign in with Google
+            </button>
           </div>
-          {/* Password */}
-          <div className="mb-4">
-            <labe className='block text-gray-700 text-sm font-bold mb-2' htmlFor="password"> Password</labe>
-            <input 
-              {...register("password", { required: true })}
-              type="password" 
-              name="password" 
-              id="password" 
-              placeholder="Password"
-              className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" 
-            />
-          </div>
-          { message && <p className="text-red-500 text-xs italic mb-3">{message}</p>}
-          <div className="flex justify-center">
-            <button className="bg-blue-500 hover:bg-blue-700 font-bold py-2 px-8 rounded focus:outline text-white">Register</button>
-          </div>
-        </form>
-        <p className="align-baseline font-medium mt-4 text-sm text-center">Have an account?{" "}
-          <Link href={"/signin"} className="text-blue-500 hover:text-blue-700">
-            Sign in
-          </Link>
-        </p>
-        {/* Google sign in */}
-        <div className="mt-4">
-          
-          <button 
-          onClick={handleGoogleSignIn}
-          className="w-full flex flex-wrap gap-1 justify-center items-center bg-red-500 hover:bg-red-700 font-bold py-2 px-4 rounded focus:outline-none text-white fpcus:outline-none">
-            <FaGoogle  className="mr-2"/>
-            Sign in with Google
-          </button>
         </div>
-        <p className="mt-5 text-center text-gray-500 text-xs">
-          ©2025 YasMade. All rights reserved.
-        </p>
+
+        <footer className="bg-gray-100 py-4 text-center">
+          <p className="text-xs text-gray-600">
+            ©2025 YasMade. All rights reserved.
+          </p>
+        </footer>
       </section>
     </section>
   )
