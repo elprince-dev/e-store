@@ -1,5 +1,4 @@
 import { addToCart } from "@/redux/features/cart/cartSlice";
-import { useAppDispatch } from "@/redux/lib/hooks";
 import {
   Card,
   CardHeader,

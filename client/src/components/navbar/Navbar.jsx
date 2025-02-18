@@ -10,8 +10,6 @@ import ShoppingCart from "./ShoppingCart";
 
 const Navbar = () => {
 
-    
-
     const currentUser = false;
   return (
     <header className="max-w-screen-2xl mx-auto px-4 py-6">
